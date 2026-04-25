@@ -1,0 +1,21 @@
+model_base: "unsloth/llama-3-8b-bnb-4bit"
+model_path: "model/intent-banking-model" 
+max_seq_length: 256
+load_in_4bit: true
+device: "cuda"
+
+prompt_template: |
+  Here is a customer query:
+  {input}
+
+  Classify this into one of the following intent:
+
+  The correct answer is: class
+
+generation:
+  max_new_tokens: 20 
+  do_sample: false
+  temperature: 0.1
+
+postprocess:
+  keyword: "The correct answer is: class" 
